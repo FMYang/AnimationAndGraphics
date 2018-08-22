@@ -24,16 +24,10 @@
 
 #pragma mark - function
 - (IBAction)drawProgressBar:(id)sender {
-
-//    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.bounds.size.width/2, 120) radius:50 startAngle:M_PI endAngle:M_PI/4 clockwise:true];
-//    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.view.bounds.size.width/2-50, 100, 100, 100)];
-
     _shaperLayer = [CAShapeLayer layer];
     _shaperLayer.frame = CGRectMake(self.view.bounds.size.width/2-50, 100, 100, 100);
 
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(_shaperLayer.bounds.size.width/2, _shaperLayer.frame.size.height/2) radius:50 startAngle:M_PI endAngle:-M_PI/4 clockwise:true];
-
-//    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:_shaperLayer.bounds];
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(_shaperLayer.bounds.size.width/2, _shaperLayer.frame.size.height/2) radius:50 startAngle:-M_PI/2 endAngle:M_PI * 3/2 clockwise:true];
 
     _shaperLayer.lineWidth = 2.0;
     _shaperLayer.strokeColor = [UIColor redColor].CGColor;
@@ -54,7 +48,7 @@
 
 #pragma mark - CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    [self.shaperLayer removeFromSuperlayer];
+//    [self.shaperLayer removeFromSuperlayer];
 }
 
 @end
