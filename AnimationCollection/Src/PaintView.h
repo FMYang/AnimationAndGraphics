@@ -15,9 +15,7 @@ typedef enum : NSUInteger {
     kPaintStyleGradients,   // 渐变
     kPaintStyleCircle,      // 圆形
     kPaintStyleOval,        // 椭圆
-    kPaintStyleTriangle,    // 三角形
-    kPaintStyleRectangle,   // 矩形
-    kPaintStylePentagram,   // 五角星
+    kPaintStyleRectangle,   // 多边形
     kPaintStyleForm,        // 表格
 } PaintStyle;
 

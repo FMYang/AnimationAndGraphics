@@ -25,9 +25,7 @@
                     @"渐变",
                     @"圆",
                     @"椭圆",
-                    @"三角形",
                     @"多边形",
-                    @"五角星",
                     @"表格"];
 }
 
@@ -81,18 +79,10 @@
             break;
 
         case 6:
-            style = kPaintStyleTriangle;
-            break;
-
-        case 7:
             style = kPaintStyleRectangle;
             break;
 
-        case 8:
-            style = kPaintStylePentagram;
-            break;
-
-        case 9:
+        case 7:
             style = kPaintStyleForm;
             break;
 
