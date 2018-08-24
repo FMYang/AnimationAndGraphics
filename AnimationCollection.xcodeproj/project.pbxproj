@@ -25,6 +25,7 @@
 		362977D9212E5A00006D94C9 /* GraphicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362977D7212E5A00006D94C9 /* GraphicsViewController.xib */; };
 		362977DC212E5BA6006D94C9 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 362977DB212E5BA6006D94C9 /* PaintViewController.m */; };
 		362977DF212E5BF6006D94C9 /* PaintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 362977DE212E5BF6006D94C9 /* PaintView.m */; };
+		362977E2212FDCB6006D94C9 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 362977E1212FDCB6006D94C9 /* GraphView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		362977DB212E5BA6006D94C9 /* PaintViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaintViewController.m; sourceTree = "<group>"; };
 		362977DD212E5BF6006D94C9 /* PaintView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaintView.h; sourceTree = "<group>"; };
 		362977DE212E5BF6006D94C9 /* PaintView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaintView.m; sourceTree = "<group>"; };
+		362977E0212FDCB6006D94C9 /* GraphView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		362977E1212FDCB6006D94C9 /* GraphView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				362977DB212E5BA6006D94C9 /* PaintViewController.m */,
 				362977DD212E5BF6006D94C9 /* PaintView.h */,
 				362977DE212E5BF6006D94C9 /* PaintView.m */,
+				362977E0212FDCB6006D94C9 /* GraphView.h */,
+				362977E1212FDCB6006D94C9 /* GraphView.m */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362977BB212BFE6B006D94C9 /* main.m in Sources */,
+				362977E2212FDCB6006D94C9 /* GraphView.m in Sources */,
 				362977D3212D5F6B006D94C9 /* ProgressViewController.m in Sources */,
 				362977CB212CF9A8006D94C9 /* CALayerAnimationViewController.m in Sources */,
 				362977DC212E5BA6006D94C9 /* PaintViewController.m in Sources */,

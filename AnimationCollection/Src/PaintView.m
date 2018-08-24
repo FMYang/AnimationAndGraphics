@@ -48,6 +48,15 @@
 
         case kPaintStyleGradients:
             [self drawGradients:ctx];
+            break;
+            
+        case kPaintStyleRectangle:
+            [self drawRectangle:ctx];
+            break;
+
+        case kPaintStyleForm:
+            [self drawForm:ctx rect:(CGRect)rect];
+            break;
 
         default:
             break;
@@ -58,8 +67,14 @@
     // 设置画笔颜色
     CGContextSetStrokeColorWithColor(ctx, [UIColor redColor].CGColor);
 
+    // 设置笔帽样式
+    // kCGLineCapButt,  方形的线，默认样式
+    // kCGLineCapRound, 圆角的线
+    // kCGLineCapSquare
+    CGContextSetLineCap(ctx, kCGLineCapRound);
+    
     // 设置线宽
-    CGContextSetLineWidth(ctx, 10.0);
+    CGContextSetLineWidth(ctx, 20.0);
 
     // 设置起始点
     CGContextMoveToPoint(ctx, 100, 100);
@@ -72,12 +87,34 @@
 
 
     // 第二条线
-    CGContextSetLineWidth(ctx, 2.0);
+    CGContextSetLineCap(ctx, kCGLineCapSquare);
+    CGContextSetLineWidth(ctx, 20.0);
     CGContextMoveToPoint(ctx, 100, 200);
     CGContextAddLineToPoint(ctx, 300, 200);
-    CGContextDrawPath(ctx, kCGPathFillStroke);
-
-
+    CGContextDrawPath(ctx, kCGPathStroke);
+    
+    // 第三条线
+    CGContextSetLineCap(ctx, kCGLineCapButt);
+    CGContextSetLineWidth(ctx, 20.0);
+    CGContextMoveToPoint(ctx, 100, 300);
+    CGContextAddLineToPoint(ctx, 300, 300);
+    CGContextDrawPath(ctx, kCGPathStroke);
+    
+    // 第四条线
+    // 设置线的连接样式
+    CGContextSetLineJoin(ctx, kCGLineJoinBevel);
+    
+    CGContextSetLineCap(ctx, kCGLineCapButt);
+    CGContextSetLineWidth(ctx, 20.0);
+    CGContextMoveToPoint(ctx, 100, 500);
+    CGContextAddLineToPoint(ctx, 300, 500);
+    CGContextAddLineToPoint(ctx, 300, 700);
+    CGContextDrawPath(ctx, kCGPathStroke);
+    
+    CGContextMoveToPoint(ctx, 300, 700);
+    CGContextSetLineJoin(ctx, kCGLineJoinRound);
+    CGContextAddLineToPoint(ctx, 100, 700);
+    CGContextDrawPath(ctx, kCGPathStroke);
 }
 
 - (void)drawDottedLine:(CGContextRef)ctx {
@@ -210,24 +247,157 @@
     CGColorSpaceRef myColorSpace;
     size_t number_location = 2;
     CGFloat locations[2] = {0.0, 1.0};
+    
+    // 定义渐变的每种颜色的颜色组件。组件应位于空间指定的颜色空间中。
     CGFloat components[8] = {1.0, 0.0, 0.0, 1.0,
         0.0, 1.0, 0.0, 1.0};
 
     myColorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+    
     gradientRef = CGGradientCreateWithColorComponents(myColorSpace, components, locations, number_location);
 
     CGColorSpaceRelease(myColorSpace);
 
-    //  paint an axial or linear gradient (线性渐变)
+    //  线性渐变
     CGContextDrawLinearGradient(ctx, gradientRef, CGPointMake(80.0, 140.0), CGPointMake(80.0, 250.0), kCGGradientDrawsBeforeStartLocation);
 
-    //辐射渐变
+    // 辐射渐变, 绘制沿所提供的开始和结束圆圈定义的区域变化的渐变填充。
     CGPoint start = CGPointMake(100, 380);//起始点
     CGPoint end = CGPointMake(100, 500); //终结点
     //辐射渐变 start:起始点 20:起始点的半径 end:终止点 40: 终止点的半径 这个辐射渐变
     CGContextDrawRadialGradient(ctx, gradientRef, start, 20, end, 40, 0);
 
+    CGGradientRelease(gradientRef);
+    
     // 注意：CAGradientLayer只支持线性渐变
+}
+
+- (void)drawRectangle:(CGContextRef)ctx {
+    // 绘制三角形
+    CGContextSetStrokeColorWithColor(ctx, [UIColor grayColor].CGColor);
+    CGContextSetFillColorWithColor(ctx, [UIColor cyanColor].CGColor);
+    CGContextSetLineWidth(ctx, 10);
+    CGPoint lines[] = {
+        CGPointMake(100, 100),
+        CGPointMake(100, 200),
+        CGPointMake(200, 200)
+    };
+    CGContextAddLines(ctx, lines, sizeof(lines)/sizeof(lines[0]));
+    CGContextClosePath(ctx);
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+    
+    // 绘制矩形
+    CGContextSetFillColorWithColor(ctx, [UIColor yellowColor].CGColor);
+    CGContextAddRect(ctx, CGRectMake(240, 100, 100, 100));
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+    
+    // 绘制多边形
+    CGContextSetLineWidth(ctx, 1);
+    CGPoint lines1[] = {
+        CGPointMake(100, 300),
+        CGPointMake(100, 400),
+        CGPointMake(200, 400),
+        CGPointMake(300, 300),
+    };
+    CGContextAddLines(ctx, lines1, sizeof(lines1)/sizeof(lines1[0]));
+    CGContextClosePath(ctx);
+    CGContextDrawPath(ctx, kCGPathStroke);
+    
+    // 绘制五角星
+    // 确定中心点
+    CGPoint centerPoint = CGPointMake(200, 500);
+    // 确定半径
+    CGFloat radius = 50;
+    // 五角星的顶点
+    CGPoint p1 = CGPointMake(centerPoint.x, centerPoint.y-radius);
+    CGContextMoveToPoint(ctx, p1.x, p1.y);
+    // 五角星每个点之间的夹角，采用弧度计算
+    // 点与点之间的夹角为2*M_PI/5.0
+    CGFloat angle = 4*M_PI/5;
+    for (int i=0; i<=5; i++) {
+        CGFloat x = centerPoint.x - sinf(i*angle)*radius;
+        CGFloat y = centerPoint.y - cosf(i*angle)*radius;
+        CGContextAddLineToPoint(ctx, x, y);
+    }
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+}
+
+- (void)drawForm:(CGContextRef)ctx rect:(CGRect)rect {
+    // Drawing code
+    // 创建颜色空间
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+    CGColorRef colors[] = {
+        [UIColor colorWithRed:255/255.0 green:233/255.0 blue:222/255.0 alpha:1.0].CGColor,
+        [UIColor colorWithRed:252/255.0 green:79/255.0 blue:8/255.0 alpha:1.0].CGColor
+    };
+
+    CGFloat loactions[2] = {0.0, 1.0};
+
+    CFArrayRef colorArray = CFArrayCreate(kCFAllocatorDefault, (const void**)colors, 2, nil);
+
+    // 创建渐变对象
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorArray, loactions);
+
+    // 裁剪
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8, 8)];
+
+    [path addClip];
+
+    // 绘制渐变
+    CGContextDrawLinearGradient(ctx, gradient, CGPointZero, CGPointMake(0, self.bounds.size.height), 0);
+
+    // 释放创建的对象
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
+
+
+    // 绘制折线
+
+    CGFloat width = self.bounds.size.width;
+    CGFloat height = self.bounds.size.height;
+    CGFloat leftMargin = 20;
+    CGFloat rightMargin = 20;
+    CGFloat topMargin = 60;
+    CGFloat bottomMargin = 40;
+    CGFloat hSpace = (width-40)/7;
+    CGFloat vSpace = (height-100)/6;
+    CGFloat x = 0.0;
+    CGFloat y = 0.0;
+
+    NSArray *graphPoints = @[@6, @2, @5, @2, @4, @1, @3];
+
+    CGFloat startY = height - bottomMargin - [graphPoints[0] intValue] * vSpace;
+    CGPoint startPoint = CGPointMake(leftMargin, startY);
+
+    UIBezierPath *drawPath = [UIBezierPath bezierPath];
+    [[UIColor whiteColor] setFill];
+    [[UIColor whiteColor] setStroke];
+    drawPath.lineWidth = 2;
+
+    [drawPath moveToPoint:startPoint];
+
+    for (int i=0; i<graphPoints.count; i++) {
+        x = leftMargin + i*hSpace;
+        y = height - bottomMargin - [graphPoints[i] intValue] * vSpace;
+        [drawPath addLineToPoint:CGPointMake(x, y)];
+    }
+
+    [drawPath stroke];
+
+    // 绘制折线填充区域
+//    UIBezierPath *clippingPath = [drawPath copy];
+//    [clippingPath addLineToPoint:CGPointMake(leftMargin+7*hSpace, height)];
+//    [clippingPath addLineToPoint:CGPointMake(leftMargin, height)];
+//    [clippingPath closePath];
+//
+//    [clippingPath addClip];
+//
+//    [[UIColor grayColor] setFill];
+//    [drawPath stroke];
+//    UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:rect];
+//    [rectpath fill];
+
 }
 
 @end
