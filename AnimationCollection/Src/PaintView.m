@@ -219,7 +219,7 @@
     CGColorSpaceRelease(myColorSpace);
 
     //  paint an axial or linear gradient (线性渐变)
-    CGContextDrawLinearGradient(ctx, gradientRef, CGPointMake(20.0, 120.0), CGPointMake(20.0, 220.0), kCGGradientDrawsBeforeStartLocation);
+    CGContextDrawLinearGradient(ctx, gradientRef, CGPointMake(80.0, 140.0), CGPointMake(80.0, 250.0), kCGGradientDrawsBeforeStartLocation);
 
     //辐射渐变
     CGPoint start = CGPointMake(100, 380);//起始点
