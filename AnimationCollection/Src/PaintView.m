@@ -7,6 +7,7 @@
 //
 
 #import "PaintView.h"
+#import "UIColor+random.h"
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
@@ -54,8 +55,16 @@
             [self drawRectangle:ctx];
             break;
 
-        case kPaintStyleForm:
-            [self drawForm:ctx rect:(CGRect)rect];
+        case kPaintStyleTrendChart:
+            [self drawTrendChart:ctx rect:(CGRect)rect];
+            break;
+
+        case kPaintStyleHistogram:
+            [self drawHistogram:ctx];
+            break;
+
+        case kPaintStylePie:
+            [self drawPie:ctx];
             break;
 
         default:
@@ -99,21 +108,29 @@
     CGContextMoveToPoint(ctx, 100, 300);
     CGContextAddLineToPoint(ctx, 300, 300);
     CGContextDrawPath(ctx, kCGPathStroke);
-    
+
+    // 测试连接线样式
     // 第四条线
     // 设置线的连接样式
-    CGContextSetLineJoin(ctx, kCGLineJoinBevel);
-    
-    CGContextSetLineCap(ctx, kCGLineCapButt);
     CGContextSetLineWidth(ctx, 20.0);
+    CGContextSetLineCap(ctx, kCGLineCapButt);
+
+    CGContextSetLineJoin(ctx, kCGLineJoinMiter);
+    CGContextMoveToPoint(ctx, 100, 400);
+    CGContextAddLineToPoint(ctx, 300, 400);
+    CGContextAddLineToPoint(ctx, 300, 430);
+    CGContextDrawPath(ctx, kCGPathStroke);
+
+    CGContextSetLineJoin(ctx, kCGLineJoinRound);
     CGContextMoveToPoint(ctx, 100, 500);
     CGContextAddLineToPoint(ctx, 300, 500);
-    CGContextAddLineToPoint(ctx, 300, 700);
+    CGContextAddLineToPoint(ctx, 300, 530);
     CGContextDrawPath(ctx, kCGPathStroke);
-    
-    CGContextMoveToPoint(ctx, 300, 700);
-    CGContextSetLineJoin(ctx, kCGLineJoinRound);
-    CGContextAddLineToPoint(ctx, 100, 700);
+
+    CGContextSetLineJoin(ctx, kCGLineJoinBevel);
+    CGContextMoveToPoint(ctx, 100, 600);
+    CGContextAddLineToPoint(ctx, 300, 600);
+    CGContextAddLineToPoint(ctx, 300, 630);
     CGContextDrawPath(ctx, kCGPathStroke);
 }
 
@@ -322,7 +339,7 @@
     CGContextDrawPath(ctx, kCGPathFillStroke);
 }
 
-- (void)drawForm:(CGContextRef)ctx rect:(CGRect)rect {
+- (void)drawTrendChart:(CGContextRef)ctx rect:(CGRect)rect {
     // Drawing code
     // 创建颜色空间
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -397,7 +414,36 @@
 //    [drawPath stroke];
 //    UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:rect];
 //    [rectpath fill];
+}
 
+- (void)drawHistogram:(CGContextRef)ctx {
+}
+
+- (void)drawPie:(CGContextRef)ctx {
+
+    NSLog(@"%f", 25.0/100);
+
+    NSArray *datas = @[@10.0, @15.0, @25.0, @50.0,];
+    __block CGFloat sum = 0.0;
+    [datas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        sum += [obj floatValue];
+    }];
+
+    CGPoint centerPoint = CGPointMake(screenWidth/2, screenHeight/2);
+    CGFloat startAngle = 0.0;
+    CGFloat endAngle = 0.0;
+    UIBezierPath *path;
+    for (NSNumber *data in datas) {
+        [[UIColor randomColor] set];
+        endAngle = startAngle + [data floatValue] * (2 * M_PI) /sum;
+        NSLog(@"start = %f, end = %f", startAngle, endAngle);
+        path = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:100 startAngle:startAngle endAngle:endAngle clockwise:true];
+
+        startAngle = endAngle;
+        path.lineWidth = 1.0;
+        [path addLineToPoint:centerPoint];
+        [path fill];
+    }
 }
 
 @end

@@ -26,7 +26,9 @@
                     @"圆",
                     @"椭圆",
                     @"多边形",
-                    @"表格"];
+                    @"走势图",
+                    @"柱状图",
+                    @"饼图"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,10 +85,19 @@
             break;
 
         case 7:
-            style = kPaintStyleForm;
+            style = kPaintStyleTrendChart;
+            break;
+
+        case 8:
+            style = kPaintStyleHistogram;
+            break;
+
+        case 9:
+            style = kPaintStylePie;
             break;
 
         default:
+            style = kPaintStyleLine;
             break;
     }
 

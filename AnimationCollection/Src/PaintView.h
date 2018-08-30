@@ -16,7 +16,9 @@ typedef enum : NSUInteger {
     kPaintStyleCircle,      // 圆形
     kPaintStyleOval,        // 椭圆
     kPaintStyleRectangle,   // 多边形
-    kPaintStyleForm,        // 表格
+    kPaintStyleTrendChart,  // 走势图
+    kPaintStyleHistogram,   // 柱状图
+    kPaintStylePie          // 饼图
 } PaintStyle;
 
 @interface PaintView : UIView

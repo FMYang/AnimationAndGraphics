@@ -7,7 +7,6 @@
 //
 
 #import "PaintViewController.h"
-#import "GraphView.h"
 
 @interface PaintViewController ()
 
@@ -22,7 +21,7 @@
 
     PaintView *paintView = [[PaintView alloc]initWithStyle:self.style];
     paintView.backgroundColor = UIColor.whiteColor;
-    if (self.style == kPaintStyleForm) {
+    if (self.style == kPaintStyleTrendChart) {
         paintView.frame = CGRectMake(20, 150, [UIScreen mainScreen].bounds.size.width-40, 250);
     } else {
         paintView.frame = self.view.frame;
