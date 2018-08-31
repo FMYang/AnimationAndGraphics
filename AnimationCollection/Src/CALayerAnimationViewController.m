@@ -8,7 +8,7 @@
 
 #import "CALayerAnimationViewController.h"
 #import "ProgressViewController.h"
-
+#import "TransitionViewController.h"
 @interface CALayerAnimationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *datasource;
@@ -19,10 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _datasource = @[@"转场动画",
+    _datasource = @[@"过渡动画",
                     @"画线",
                     @"进度条",
-                    @"自由落体",
+                    @"抛物线",
                     @"点赞",
                     @"粒子效果",
                     @"圆周运动",
@@ -54,6 +54,7 @@
     UIViewController *vc;
     switch (indexPath.row) {
         case 0:
+            vc = [[TransitionViewController alloc]init];
             break;
 
         case 1:

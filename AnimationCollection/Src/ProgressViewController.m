@@ -7,15 +7,19 @@
 //
 
 #import "ProgressViewController.h"
+#import "UIImage+DotLine.h"
 
 @interface ProgressViewController () <CAAnimationDelegate>
 @property (nonatomic, strong) CAShapeLayer *shaperLayer;
+@property (nonatomic, strong) UIImageView *textImage;
 @end
 
 @implementation ProgressViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self.view addSubview:self.textImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +53,16 @@
 #pragma mark - CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 //    [self.shaperLayer removeFromSuperlayer];
+}
+
+- (UIImageView *)textImage {
+    if (!_textImage) {
+        _textImage = [[UIImageView alloc]init];
+        _textImage.frame = CGRectMake(20, 500, screenWidth-40, 2);
+        _textImage.image = [UIImage dotLine];
+    }
+
+    return _textImage;
 }
 
 @end

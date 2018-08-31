@@ -25,7 +25,7 @@
 
     self.title = @"动画和绘图合集";
 
-    _datasource = @[@"绘图", @"UIView动画", @"CALayer动画"];
+    _datasource = @[@"绘图", @"UIView动画", @"CALayer动画", @"有趣的动画"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +57,7 @@
     else if (indexPath.row == 1) {
         ViewAnimationViewController *vc = [[ViewAnimationViewController alloc] init];
         [self.navigationController pushViewController:vc animated:true];
-    } else {
+    } else if (indexPath.row == 2) {
         CALayerAnimationViewController *vc = [[CALayerAnimationViewController alloc] init];
         [self.navigationController pushViewController:vc animated:true];
     }

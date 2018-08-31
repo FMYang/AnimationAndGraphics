@@ -9,9 +9,6 @@
 #import "PaintView.h"
 #import "UIColor+random.h"
 
-#define screenWidth [UIScreen mainScreen].bounds.size.width
-#define screenHeight [UIScreen mainScreen].bounds.size.height
-
 @implementation PaintView
 
 - (instancetype)initWithStyle:(PaintStyle)style {
@@ -132,6 +129,15 @@
     CGContextAddLineToPoint(ctx, 300, 600);
     CGContextAddLineToPoint(ctx, 300, 630);
     CGContextDrawPath(ctx, kCGPathStroke);
+    // 通过CGContext画线
+
+    // 通过CGPath画线
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 100, 700);
+    CGPathAddLineToPoint(path, NULL, 300, 700);
+    CGContextAddPath(ctx, path);
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+    CGPathRelease(path); // 记得释放
 }
 
 - (void)drawDottedLine:(CGContextRef)ctx {
@@ -356,33 +362,29 @@
     // 创建渐变对象
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorArray, loactions);
 
-    // 裁剪
+    // 圆角矩形
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8, 8)];
-
+    // 这个方法修改了当前图形上下文的可见绘图区域。在调用它之后，随后的绘图操作只会在指定路径的填充区域内出现呈现的内容。
     [path addClip];
 
-    // 绘制渐变
+    // 绘制背景渐变
     CGContextDrawLinearGradient(ctx, gradient, CGPointZero, CGPointMake(0, self.bounds.size.height), 0);
 
-    // 释放创建的对象
-    CGColorSpaceRelease(colorSpace);
-    CGGradientRelease(gradient);
-
+    CGContextSaveGState(ctx);
 
     // 绘制折线
 
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
     CGFloat leftMargin = 20;
-    CGFloat rightMargin = 20;
     CGFloat topMargin = 60;
     CGFloat bottomMargin = 40;
     CGFloat hSpace = (width-40)/7;
-    CGFloat vSpace = (height-100)/6;
+    CGFloat vSpace = (height-100)/8;
     CGFloat x = 0.0;
     CGFloat y = 0.0;
 
-    NSArray *graphPoints = @[@6, @2, @5, @2, @4, @1, @3];
+    NSArray *graphPoints = @[@6, @2, @5, @2, @4, @1, @3, @0];
 
     CGFloat startY = height - bottomMargin - [graphPoints[0] intValue] * vSpace;
     CGPoint startPoint = CGPointMake(leftMargin, startY);
@@ -394,6 +396,7 @@
 
     [drawPath moveToPoint:startPoint];
 
+    // 绘制折线
     for (int i=0; i<graphPoints.count; i++) {
         x = leftMargin + i*hSpace;
         y = height - bottomMargin - [graphPoints[i] intValue] * vSpace;
@@ -403,26 +406,81 @@
     [drawPath stroke];
 
     // 绘制折线填充区域
-//    UIBezierPath *clippingPath = [drawPath copy];
-//    [clippingPath addLineToPoint:CGPointMake(leftMargin+7*hSpace, height)];
-//    [clippingPath addLineToPoint:CGPointMake(leftMargin, height)];
-//    [clippingPath closePath];
-//
-//    [clippingPath addClip];
-//
-//    [[UIColor grayColor] setFill];
-//    [drawPath stroke];
-//    UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:rect];
-//    [rectpath fill];
+    CGPoint gradentStartPoint = CGPointMake(leftMargin, height);
+    CGPoint gradentEndPoint = CGPointMake(leftMargin+hSpace*7, height);
+
+    UIBezierPath *fillPath = [drawPath copy];
+    [fillPath addLineToPoint:gradentEndPoint];
+    [fillPath addLineToPoint:gradentStartPoint];
+    [fillPath closePath];
+
+    [fillPath addClip];
+
+    [[UIColor grayColor] setFill];
+
+    // 折线阴影
+    CGPoint xx = CGPointMake(leftMargin, height-8*vSpace);
+    CGPoint yy = CGPointMake(leftMargin, height);
+
+    CGContextDrawLinearGradient(ctx, gradient, xx, yy, kCGGradientDrawsBeforeStartLocation);
+
+    CGContextRestoreGState(ctx);
+
+    // 画横线
+    CGContextSetLineWidth(ctx, 0.5);
+    [[UIColor colorWithWhite:1.0 alpha:0.3] set];
+    CGContextMoveToPoint(ctx, leftMargin, height-bottomMargin-8*vSpace);
+    CGContextAddLineToPoint(ctx, leftMargin+7*hSpace, height-bottomMargin-8*vSpace);
+
+    CGContextMoveToPoint(ctx, leftMargin, height-bottomMargin-4*vSpace);
+    CGContextAddLineToPoint(ctx, leftMargin+7*hSpace, height-bottomMargin-4*vSpace);
+
+    CGContextMoveToPoint(ctx, leftMargin, height-bottomMargin);
+    CGContextAddLineToPoint(ctx, leftMargin+7*hSpace, height-bottomMargin);
+
+    // 画竖线
+    for (int i=0; i<=7; i++) {
+        CGContextMoveToPoint(ctx, leftMargin+i*hSpace, topMargin);
+        CGContextAddLineToPoint(ctx, leftMargin+i*hSpace, height-bottomMargin);
+    }
+
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+
+    // 释放创建的对象
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
 }
 
 - (void)drawHistogram:(CGContextRef)ctx {
+
+    NSArray *datas = @[@10.0, @25.0, @50.0, @80, @125.0, @225.0, @300.0]; // one week
+
+    CGPoint center = CGPointMake(20, 500);
+    CGPoint hEndPoint = CGPointMake(screenWidth-20, center.y);
+    CGPoint vEndPoint = CGPointMake(center.x, 200);
+    float histogramWidth = (screenWidth-40)/13;
+
+    [[UIColor redColor] set];
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path setLineWidth:0.5];
+    [path moveToPoint:center];
+    [path addLineToPoint:hEndPoint];
+    [path moveToPoint:center];
+    [path addLineToPoint:vEndPoint];
+    [path stroke];
+
+    for (int i=0; i<datas.count; i++) {
+        float number = [datas[i] floatValue];
+        float x = 20 + histogramWidth * 2 * i;
+        float y = center.y - number;
+        CGRect rect = CGRectMake(x, y, histogramWidth, number);
+        UIBezierPath *path = [UIBezierPath bezierPathWithRect:rect];
+        [[UIColor randomColor] set];
+        [path fill];
+    }
 }
 
 - (void)drawPie:(CGContextRef)ctx {
-
-    NSLog(@"%f", 25.0/100);
-
     NSArray *datas = @[@10.0, @15.0, @25.0, @50.0,];
     __block CGFloat sum = 0.0;
     [datas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -436,7 +494,6 @@
     for (NSNumber *data in datas) {
         [[UIColor randomColor] set];
         endAngle = startAngle + [data floatValue] * (2 * M_PI) /sum;
-        NSLog(@"start = %f, end = %f", startAngle, endAngle);
         path = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:100 startAngle:startAngle endAngle:endAngle clockwise:true];
 
         startAngle = endAngle;
@@ -444,6 +501,14 @@
         [path addLineToPoint:centerPoint];
         [path fill];
     }
+
+//    绘制label
+//    UILabel *label = [[UILabel alloc]init];
+//    [label drawTextInRect:CGRectZero];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.layer setNeedsDisplay];
 }
 
 @end
