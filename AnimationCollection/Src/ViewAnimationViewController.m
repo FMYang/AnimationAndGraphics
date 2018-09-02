@@ -54,7 +54,10 @@
 // 旋转
 - (IBAction)transform:(id)sender {
     [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat animations:^{
-        self.animationView.transform = CGAffineTransformRotate(self.animationView.transform, M_PI / 2);
+        
+        // 注意：CALayer的transform属性CATransform3D，UIView的transform属性CGAffineTransform
+//        self.animationView.layer.transform = CATransform3DMakeRotation(M_PI, 1, 0, 0); // 3D动画 x, y, z
+        self.animationView.transform = CGAffineTransformRotate(self.animationView.transform, M_PI / 2); // 2D动画
     } completion:^(BOOL finished) {
         // do noting
     }];

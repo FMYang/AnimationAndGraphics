@@ -9,6 +9,10 @@
 #import "CALayerAnimationViewController.h"
 #import "ProgressViewController.h"
 #import "TransitionViewController.h"
+#import "MeituanAddFoodViewController.h"
+#import "ShakeViewController.h"
+#import "CAEmitterViewController.h"
+
 @interface CALayerAnimationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *datasource;
@@ -19,7 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _datasource = @[@"过渡动画",
+    _datasource = @[@"属性动画",
+                    @"过渡动画",
                     @"画线",
                     @"进度条",
                     @"抛物线",
@@ -53,22 +58,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIViewController *vc;
     switch (indexPath.row) {
-        case 0:
+        case 1:
             vc = [[TransitionViewController alloc]init];
             break;
 
-        case 1:
+        case 2:
             break;
 
-        case 2: {
+        case 3: {
             vc = [[ProgressViewController alloc]init];
             break;
         }
 
-        case 3:
+        case 4:
+            vc = [[MeituanAddFoodViewController alloc]init];
             break;
 
-        case 4:
+        case 5:
+            break;
+            
+        case 6:
+            vc = [[CAEmitterViewController alloc]init];
+            break;
+            
+        case 8:
+            vc = [[ShakeViewController alloc]init];
             break;
 
         default:

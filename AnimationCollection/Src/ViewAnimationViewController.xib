@@ -81,15 +81,15 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1di-Xj-Kt5">
-                    <rect key="frame" x="30" y="139" width="92" height="30"/>
-                    <state key="normal" title="从上到下卷起"/>
+                    <rect key="frame" x="30" y="139" width="62" height="30"/>
+                    <state key="normal" title="向上卷起"/>
                     <connections>
                         <action selector="transition:" destination="-1" eventType="touchUpInside" id="rpY-zL-cWR"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N36-dg-qzB">
-                    <rect key="frame" x="141" y="139" width="92" height="30"/>
-                    <state key="normal" title="从下到上卷起"/>
+                    <rect key="frame" x="111" y="139" width="62" height="30"/>
+                    <state key="normal" title="向下卷起"/>
                     <connections>
                         <action selector="transition:" destination="-1" eventType="touchUpInside" id="29K-Ka-ik1"/>
                     </connections>

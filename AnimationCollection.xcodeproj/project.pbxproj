@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		362977B7212BFE6B006D94C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 362977AB212BFE6B006D94C9 /* AppDelegate.m */; };
-		362977B8212BFE6B006D94C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362977AD212BFE6B006D94C9 /* Assets.xcassets */; };
 		362977B9212BFE6B006D94C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362977AE212BFE6B006D94C9 /* LaunchScreen.storyboard */; };
 		362977BA212BFE6B006D94C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362977B0212BFE6B006D94C9 /* Main.storyboard */; };
 		362977BB212BFE6B006D94C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 362977B2212BFE6B006D94C9 /* main.m */; };
@@ -29,13 +28,19 @@
 		363A9A8A21391B1B00151960 /* UIImage+DotLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A8921391B1B00151960 /* UIImage+DotLine.m */; };
 		363A9A8F213929BC00151960 /* TransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A8D213929BC00151960 /* TransitionViewController.m */; };
 		363A9A90213929BC00151960 /* TransitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363A9A8E213929BC00151960 /* TransitionViewController.xib */; };
+		8860A6C2213A7D4900796159 /* MeituanAddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860A6C0213A7D4900796159 /* MeituanAddFoodViewController.m */; };
+		8860A6C3213A7D4900796159 /* MeituanAddFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6C1213A7D4900796159 /* MeituanAddFoodViewController.xib */; };
+		8860A6C5213A7E3A00796159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6C4213A7E3A00796159 /* Assets.xcassets */; };
+		8860A6C9213B7D3A00796159 /* ShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860A6C7213B7D3A00796159 /* ShakeViewController.m */; };
+		8860A6CA213B7D3A00796159 /* ShakeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6C8213B7D3A00796159 /* ShakeViewController.xib */; };
+		8860A6CE213C0D3A00796159 /* CAEmitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860A6CC213C0D3A00796159 /* CAEmitterViewController.m */; };
+		8860A6CF213C0D3A00796159 /* CAEmitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6CD213C0D3A00796159 /* CAEmitterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36297791212BFDD1006D94C9 /* AnimationCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362977AA212BFE6B006D94C9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		362977AB212BFE6B006D94C9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		362977AD212BFE6B006D94C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		362977AF212BFE6B006D94C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		362977B1212BFE6B006D94C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		362977B2212BFE6B006D94C9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -67,6 +72,16 @@
 		363A9A8C213929BC00151960 /* TransitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransitionViewController.h; sourceTree = "<group>"; };
 		363A9A8D213929BC00151960 /* TransitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransitionViewController.m; sourceTree = "<group>"; };
 		363A9A8E213929BC00151960 /* TransitionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionViewController.xib; sourceTree = "<group>"; };
+		8860A6BF213A7D4900796159 /* MeituanAddFoodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeituanAddFoodViewController.h; sourceTree = "<group>"; };
+		8860A6C0213A7D4900796159 /* MeituanAddFoodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeituanAddFoodViewController.m; sourceTree = "<group>"; };
+		8860A6C1213A7D4900796159 /* MeituanAddFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeituanAddFoodViewController.xib; sourceTree = "<group>"; };
+		8860A6C4213A7E3A00796159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8860A6C6213B7D3A00796159 /* ShakeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShakeViewController.h; sourceTree = "<group>"; };
+		8860A6C7213B7D3A00796159 /* ShakeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShakeViewController.m; sourceTree = "<group>"; };
+		8860A6C8213B7D3A00796159 /* ShakeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShakeViewController.xib; sourceTree = "<group>"; };
+		8860A6CB213C0D3A00796159 /* CAEmitterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAEmitterViewController.h; sourceTree = "<group>"; };
+		8860A6CC213C0D3A00796159 /* CAEmitterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAEmitterViewController.m; sourceTree = "<group>"; };
+		8860A6CD213C0D3A00796159 /* CAEmitterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CAEmitterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +125,7 @@
 		362977AC212BFE6B006D94C9 /* SupporttingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				362977AD212BFE6B006D94C9 /* Assets.xcassets */,
+				8860A6C4213A7E3A00796159 /* Assets.xcassets */,
 				362977AE212BFE6B006D94C9 /* LaunchScreen.storyboard */,
 				362977B0212BFE6B006D94C9 /* Main.storyboard */,
 				362977B2212BFE6B006D94C9 /* main.m */,
@@ -149,6 +164,15 @@
 				363A9A8C213929BC00151960 /* TransitionViewController.h */,
 				363A9A8D213929BC00151960 /* TransitionViewController.m */,
 				363A9A8E213929BC00151960 /* TransitionViewController.xib */,
+				8860A6BF213A7D4900796159 /* MeituanAddFoodViewController.h */,
+				8860A6C0213A7D4900796159 /* MeituanAddFoodViewController.m */,
+				8860A6C1213A7D4900796159 /* MeituanAddFoodViewController.xib */,
+				8860A6C6213B7D3A00796159 /* ShakeViewController.h */,
+				8860A6C7213B7D3A00796159 /* ShakeViewController.m */,
+				8860A6C8213B7D3A00796159 /* ShakeViewController.xib */,
+				8860A6CB213C0D3A00796159 /* CAEmitterViewController.h */,
+				8860A6CC213C0D3A00796159 /* CAEmitterViewController.m */,
+				8860A6CD213C0D3A00796159 /* CAEmitterViewController.xib */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -210,14 +234,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8860A6CF213C0D3A00796159 /* CAEmitterViewController.xib in Resources */,
 				362977D9212E5A00006D94C9 /* GraphicsViewController.xib in Resources */,
 				362977CC212CF9A8006D94C9 /* CALayerAnimationViewController.xib in Resources */,
+				8860A6C5213A7E3A00796159 /* Assets.xcassets in Resources */,
 				362977BC212BFE6B006D94C9 /* Info.plist in Resources */,
 				363A9A90213929BC00151960 /* TransitionViewController.xib in Resources */,
+				8860A6C3213A7D4900796159 /* MeituanAddFoodViewController.xib in Resources */,
 				362977BA212BFE6B006D94C9 /* Main.storyboard in Resources */,
+				8860A6CA213B7D3A00796159 /* ShakeViewController.xib in Resources */,
 				362977C7212C008C006D94C9 /* ViewAnimationViewController.xib in Resources */,
 				362977C2212BFEA4006D94C9 /* RootViewController.xib in Resources */,
-				362977B8212BFE6B006D94C9 /* Assets.xcassets in Resources */,
 				362977B9212BFE6B006D94C9 /* LaunchScreen.storyboard in Resources */,
 				362977D4212D5F6B006D94C9 /* ProgressViewController.xib in Resources */,
 			);
@@ -232,6 +259,7 @@
 			files = (
 				363A9A8A21391B1B00151960 /* UIImage+DotLine.m in Sources */,
 				363A9A842137EAA400151960 /* UIColor+random.m in Sources */,
+				8860A6CE213C0D3A00796159 /* CAEmitterViewController.m in Sources */,
 				362977BB212BFE6B006D94C9 /* main.m in Sources */,
 				362977D3212D5F6B006D94C9 /* ProgressViewController.m in Sources */,
 				362977CB212CF9A8006D94C9 /* CALayerAnimationViewController.m in Sources */,
@@ -239,7 +267,9 @@
 				362977B7212BFE6B006D94C9 /* AppDelegate.m in Sources */,
 				363A9A8F213929BC00151960 /* TransitionViewController.m in Sources */,
 				362977C6212C008C006D94C9 /* ViewAnimationViewController.m in Sources */,
+				8860A6C9213B7D3A00796159 /* ShakeViewController.m in Sources */,
 				362977D8212E5A00006D94C9 /* GraphicsViewController.m in Sources */,
+				8860A6C2213A7D4900796159 /* MeituanAddFoodViewController.m in Sources */,
 				362977C1212BFEA4006D94C9 /* RootViewController.m in Sources */,
 				362977DF212E5BF6006D94C9 /* PaintView.m in Sources */,
 			);
@@ -384,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 464SP5UW8T;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/yangfangming/tuandai/Github/AnimationAndGraphics/AnimationCollection/SupporttingFiles/AnimationCollection-Prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/SupporttingFiles/AnimationCollection-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/AnimationCollection/SupporttingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,7 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 464SP5UW8T;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/yangfangming/tuandai/Github/AnimationAndGraphics/AnimationCollection/SupporttingFiles/AnimationCollection-Prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/SupporttingFiles/AnimationCollection-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/AnimationCollection/SupporttingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
