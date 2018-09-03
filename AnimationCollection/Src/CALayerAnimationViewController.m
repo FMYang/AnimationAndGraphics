@@ -12,6 +12,8 @@
 #import "MeituanAddFoodViewController.h"
 #import "ShakeViewController.h"
 #import "CAEmitterViewController.h"
+#import "DrawLineViewController.h"
+#import "PropertyAnimationViewController.h"
 
 @interface CALayerAnimationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,8 +33,7 @@
                     @"点赞",
                     @"粒子效果",
                     @"圆周运动",
-                    @"抖动",
-                    @"曲线运动"];
+                    @"抖动"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,11 +59,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIViewController *vc;
     switch (indexPath.row) {
+        case 0:
+            vc = [[PropertyAnimationViewController alloc]init];
+            break;
+
         case 1:
             vc = [[TransitionViewController alloc]init];
             break;
 
         case 2:
+            vc = [[DrawLineViewController alloc]init];
             break;
 
         case 3: {

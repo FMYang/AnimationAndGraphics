@@ -28,6 +28,10 @@
 		363A9A8A21391B1B00151960 /* UIImage+DotLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A8921391B1B00151960 /* UIImage+DotLine.m */; };
 		363A9A8F213929BC00151960 /* TransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A8D213929BC00151960 /* TransitionViewController.m */; };
 		363A9A90213929BC00151960 /* TransitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363A9A8E213929BC00151960 /* TransitionViewController.xib */; };
+		363A9A9C213CD64C00151960 /* DrawLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A9A213CD64C00151960 /* DrawLineViewController.m */; };
+		363A9A9D213CD64C00151960 /* DrawLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363A9A9B213CD64C00151960 /* DrawLineViewController.xib */; };
+		363A9AA1213CD9E900151960 /* PropertyAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 363A9A9F213CD9E900151960 /* PropertyAnimationViewController.m */; };
+		363A9AA2213CD9E900151960 /* PropertyAnimationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363A9AA0213CD9E900151960 /* PropertyAnimationViewController.xib */; };
 		8860A6C2213A7D4900796159 /* MeituanAddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860A6C0213A7D4900796159 /* MeituanAddFoodViewController.m */; };
 		8860A6C3213A7D4900796159 /* MeituanAddFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6C1213A7D4900796159 /* MeituanAddFoodViewController.xib */; };
 		8860A6C5213A7E3A00796159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8860A6C4213A7E3A00796159 /* Assets.xcassets */; };
@@ -72,6 +76,12 @@
 		363A9A8C213929BC00151960 /* TransitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransitionViewController.h; sourceTree = "<group>"; };
 		363A9A8D213929BC00151960 /* TransitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransitionViewController.m; sourceTree = "<group>"; };
 		363A9A8E213929BC00151960 /* TransitionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitionViewController.xib; sourceTree = "<group>"; };
+		363A9A99213CD64C00151960 /* DrawLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawLineViewController.h; sourceTree = "<group>"; };
+		363A9A9A213CD64C00151960 /* DrawLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawLineViewController.m; sourceTree = "<group>"; };
+		363A9A9B213CD64C00151960 /* DrawLineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawLineViewController.xib; sourceTree = "<group>"; };
+		363A9A9E213CD9E900151960 /* PropertyAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyAnimationViewController.h; sourceTree = "<group>"; };
+		363A9A9F213CD9E900151960 /* PropertyAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyAnimationViewController.m; sourceTree = "<group>"; };
+		363A9AA0213CD9E900151960 /* PropertyAnimationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyAnimationViewController.xib; sourceTree = "<group>"; };
 		8860A6BF213A7D4900796159 /* MeituanAddFoodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeituanAddFoodViewController.h; sourceTree = "<group>"; };
 		8860A6C0213A7D4900796159 /* MeituanAddFoodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeituanAddFoodViewController.m; sourceTree = "<group>"; };
 		8860A6C1213A7D4900796159 /* MeituanAddFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeituanAddFoodViewController.xib; sourceTree = "<group>"; };
@@ -173,6 +183,12 @@
 				8860A6CB213C0D3A00796159 /* CAEmitterViewController.h */,
 				8860A6CC213C0D3A00796159 /* CAEmitterViewController.m */,
 				8860A6CD213C0D3A00796159 /* CAEmitterViewController.xib */,
+				363A9A99213CD64C00151960 /* DrawLineViewController.h */,
+				363A9A9A213CD64C00151960 /* DrawLineViewController.m */,
+				363A9A9B213CD64C00151960 /* DrawLineViewController.xib */,
+				363A9A9E213CD9E900151960 /* PropertyAnimationViewController.h */,
+				363A9A9F213CD9E900151960 /* PropertyAnimationViewController.m */,
+				363A9AA0213CD9E900151960 /* PropertyAnimationViewController.xib */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -236,6 +252,7 @@
 			files = (
 				8860A6CF213C0D3A00796159 /* CAEmitterViewController.xib in Resources */,
 				362977D9212E5A00006D94C9 /* GraphicsViewController.xib in Resources */,
+				363A9AA2213CD9E900151960 /* PropertyAnimationViewController.xib in Resources */,
 				362977CC212CF9A8006D94C9 /* CALayerAnimationViewController.xib in Resources */,
 				8860A6C5213A7E3A00796159 /* Assets.xcassets in Resources */,
 				362977BC212BFE6B006D94C9 /* Info.plist in Resources */,
@@ -244,6 +261,7 @@
 				362977BA212BFE6B006D94C9 /* Main.storyboard in Resources */,
 				8860A6CA213B7D3A00796159 /* ShakeViewController.xib in Resources */,
 				362977C7212C008C006D94C9 /* ViewAnimationViewController.xib in Resources */,
+				363A9A9D213CD64C00151960 /* DrawLineViewController.xib in Resources */,
 				362977C2212BFEA4006D94C9 /* RootViewController.xib in Resources */,
 				362977B9212BFE6B006D94C9 /* LaunchScreen.storyboard in Resources */,
 				362977D4212D5F6B006D94C9 /* ProgressViewController.xib in Resources */,
@@ -263,8 +281,10 @@
 				362977BB212BFE6B006D94C9 /* main.m in Sources */,
 				362977D3212D5F6B006D94C9 /* ProgressViewController.m in Sources */,
 				362977CB212CF9A8006D94C9 /* CALayerAnimationViewController.m in Sources */,
+				363A9AA1213CD9E900151960 /* PropertyAnimationViewController.m in Sources */,
 				362977DC212E5BA6006D94C9 /* PaintViewController.m in Sources */,
 				362977B7212BFE6B006D94C9 /* AppDelegate.m in Sources */,
+				363A9A9C213CD64C00151960 /* DrawLineViewController.m in Sources */,
 				363A9A8F213929BC00151960 /* TransitionViewController.m in Sources */,
 				362977C6212C008C006D94C9 /* ViewAnimationViewController.m in Sources */,
 				8860A6C9213B7D3A00796159 /* ShakeViewController.m in Sources */,
